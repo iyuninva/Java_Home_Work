@@ -20,6 +20,8 @@ public class Main {
                 task_2.Result();
                 break;
             case (3):
+                Task_3 task_3 = new Task_3();
+                task_3.СalMode();
                 break;
             case (4):
                 break;
