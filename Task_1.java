@@ -14,7 +14,6 @@ public class Task_1 {
 
     void InputMode() {
         do {
-
             System.out.print("Выберите режим работы программы 'n или n!': ");
             Scanner in = new Scanner(System.in);
             flag_mode = in.next();

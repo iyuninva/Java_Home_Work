@@ -16,6 +16,8 @@ public class Main {
                 task_1.InputMode();
                 break;
             case (2):
+                Task_2 task_2 = new Task_2();
+                task_2.Result();
                 break;
             case (3):
                 break;
