@@ -24,6 +24,8 @@ public class Main {
                 task_3.СalMode();
                 break;
             case (4):
+                Task_4 task_4 = new Task_4();
+                task_4.IntInput();
                 break;
             case (5):
                 break;
