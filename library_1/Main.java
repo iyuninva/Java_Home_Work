@@ -1,3 +1,4 @@
+package library_1;
 import java.util.Scanner;
 
 /**
@@ -6,11 +7,11 @@ import java.util.Scanner;
 public class Main {
     static int task;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.print("Выберите № задания: ");
         Scanner in = new Scanner(System.in);
         task = in.nextInt();
-        switch(task) {
+        switch (task) {
             case (1):
                 Task_1 task_1 = new Task_1();
                 task_1.InputMode();
@@ -26,16 +27,6 @@ public class Main {
             case (4):
                 Task_4 task_4 = new Task_4();
                 task_4.IntInput();
-                break;
-            case (5):
-                break;
-            case (6):
-                break;
-            case (7):
-                break;
-            case (8):
-                break;
-            case (9):
                 break;
         }
         in.close();
