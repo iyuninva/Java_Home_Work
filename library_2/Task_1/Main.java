@@ -3,7 +3,7 @@
 // Если значение null, то параметр не должен попадать в запрос.
 // Параметры для фильтрации: {"name":"Ivanov", "country":"Russia", "city":"Moscow", "age":"null"}
 
-package library_2;
+package library_2.Task_1;
 
 public class Main {
     public static void main(String[] args) throws Exception {

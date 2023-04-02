@@ -1,9 +1,7 @@
-package library_2;
-
+package library_2.Task_2;
 import java.io.*;
 
 public class ConfigOut {
-    
     public static String[] ReadLineFromFile(String pathway) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(pathway));
         String str;

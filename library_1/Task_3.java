@@ -1,5 +1,8 @@
 package library_1;
+import java.lang.System.Logger;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.XMLFormatter;
 
 /**
  * Task_3
@@ -99,4 +102,5 @@ public class Task_3 {
         System.out.println(result_div);
         return result_div;
     }
+
 }
