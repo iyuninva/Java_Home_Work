@@ -1,9 +1,6 @@
 package library_1;
 import java.util.Scanner;
 
-/**
- * Main
- */
 public class Main {
     static int task;
 
