@@ -17,7 +17,7 @@ public class Task_1 {
     }
 
     static void inputList() {
-        for(int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++) {
             list.add(randomNumberList());
         }
         System.out.printf("Начальний List: %s", list);
@@ -25,7 +25,7 @@ public class Task_1 {
     }
 
     static LinkedList<Integer> flipList() {
-        for(int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++) {
             flipList.add(list.getLast());
             list.removeLast();
         }
@@ -45,5 +45,4 @@ public class Task_1 {
         int randomLength = random.nextInt(3, 10);
         return randomLength;
     }
-
 }
