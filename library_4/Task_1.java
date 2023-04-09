@@ -24,13 +24,14 @@ public class Task_1 {
         flipList();
     }
 
-    static void flipList() {
+    static LinkedList<Integer> flipList() {
         for(int i = 0; i < length; i++) {
             flipList.add(list.getLast());
             list.removeLast();
         }
         System.out.println();
         System.out.printf("Перевернутый List: %s", flipList);
+        return flipList;
     }
 
     static int randomNumberList() {
