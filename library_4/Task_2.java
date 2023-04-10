@@ -42,9 +42,9 @@ public class Task_2 {
             listEnqueue.add(i);
         }
         for (int i = 1; i <= SIZE; i++) {
-            if(i == temp) {
+            if (i == temp) {
                 listEnqueue.addLast(temp);
-                listEnqueue.remove(i-1);
+                listEnqueue.remove(i - 1);
             }
         }
         System.out.printf("enqueue List: %s", listEnqueue);

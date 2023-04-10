@@ -1,5 +1,6 @@
 package library_4;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
@@ -7,101 +8,141 @@ import java.util.Scanner;
  */
 
 public class Task_3 {
+
+    static Scanner in = new Scanner(System.in);
     static String mode;
-    static int number_1;
-    static int number_2;
+    static ArrayList<Integer> listNumber = new ArrayList<>();
+    static ArrayList<Double> listNumberDouble = new ArrayList<>();
+    static boolean flag;
+    static Object tempInput = Integer.valueOf("1");
+    static Object tempInputDouble = Double.valueOf("1.0");
     static int result;
     static double result_div;
-    static boolean flag = false;
+    
 
     public static void main(String[] args) {
-        СalMode();
+        calMode();
     }
 
-    static void СalMode() {
-        do {
-            Scanner in = new Scanner(System.in);
-            System.out.print("Выберите режим калькулятора ('+' '-' '*' '/') :");
-            mode = in.next();
-            if (mode.equals("+")) {
-                flag = false;
-
-                number_1 = in.nextInt();
-        
-                number_2 = in.nextInt();
-                System.out.printf("%s %s %s = ", number_1, mode, number_2);
-                ModeSum(number_1, number_2);
-                break;
-            } else if (mode.equals("-")) {
-                flag = false;
-                System.out.print("Number - 1 = ");
-                number_1 = in.nextInt();
-                System.out.print("Number - 2 = ");
-                number_2 = in.nextInt();
-                ModeDeduction(number_1, number_2);
-                break;
-            } else if (mode.equals("*")) {
-                flag = false;
-                System.out.print("Number - 1 = ");
-                number_1 = in.nextInt();
-                System.out.print("Number - 2 = ");
-                number_2 = in.nextInt();
-                ModeMultiplier(number_1, number_2);
-                break;
-            } else if (mode.equals("/")) {
-                flag = false;
-                System.out.print("Number - 1 = ");
-                double number_1 = in.nextDouble();
-                System.out.print("Number - 2 = ");
-                double number_2 = in.nextDouble();
-                ModeDivision(number_1, number_2);
-                break;
-            } else {
-                System.out.println("Error: Некорректный ввод");
-            }
-
-        } while (!flag);
-    }
-
-    static int ModeSum(int number_1, int number_2) {
-        result = number_1 + number_2;
-        return PrintOutput(result);
-    }
-
-    static int ModeDeduction(int number_1, int number_2) {
-        result = number_1 - number_2;
-        return PrintOutput(result);
-    }
-
-    static int ModeMultiplier(int number_1, int number_2) {
-        result = number_1 * number_2;
-        return PrintOutput(result);
-    }
-
-    static double ModeDivision(double number_1, double number_2) {
-        if (number_2 == 0) {
-            System.out.println("Error: на 0 делить нельзя!");
-            return 0;
+    
+    static void calMode() { // Выбор режима калькулятора 
+        System.out.println("Выберите режим: + - * /");
+        mode = scannerString();
+        if(mode.equals("+")) {
+            modeSum();
+        } else if(mode.equals("-")) {
+            modeDeduction();
+        } else if(mode.equals("*")) {
+            modeMultiplier();
+        } else if (mode.equals("/")){
+            modeDivision();
         } else {
-            if (number_1 % number_2 == 0) {
-                result_div = (number_1 / number_2) + (number_1 % number_2);
-                System.out.println(String.format("%.0f", result_div));
-                return result_div;
-            } else {
-                result_div = (number_1 / number_2) + (number_1 % number_2);
-                return PrintOutputDouble(result_div);
-            }
+            System.out.println("ERROR!!!");
+            calMode();
         }
     }
 
-    static int PrintOutput(int result) {
-        System.out.println(result);
+    static ArrayList<Integer> calInputNumber() { // Заполнение листа чисел
+        System.out.println();
+        do {
+            System.out.print("num: ");
+            tempInput = scannerString();
+            if(!tempInput.equals("end")) {
+                if(!tempInput.equals("back")) {
+                    int numberInput = Integer.parseInt((String) tempInput);
+                    listNumber.add(numberInput);
+                } else {
+                    System.out.println("Отмена!");
+                    listNumber.remove(listNumber.size() - 1);
+                }
+            } else {
+                flag = true;
+            }
+        } while(!flag);
+        return listNumber;
+    }
+
+    static ArrayList<Double> calInputDouble() { // Заполнение листа чисел
+        System.out.println();
+        do {
+            System.out.print("num: ");
+            tempInputDouble = scannerString();
+            if(!tempInputDouble.equals("end")) {
+                if(!tempInputDouble.equals("back")) {
+                Double numberInputDouble = Double.parseDouble((String) tempInputDouble);
+                listNumberDouble.add(numberInputDouble);
+                } else {
+                    System.out.println("Отмена!");
+                    listNumberDouble.remove(listNumberDouble.size() - 1);
+                }
+            } else {
+                flag = true;
+            }
+        } while(!flag);
+        return listNumberDouble;
+    }
+
+    static int modeSum() { // Режим СУММА!
+        calInputNumber();
+        for(int i = 0; i < listNumber.size(); i++) {
+            result += listNumber.get(i);
+        }
+        outputProgram();
         return result;
     }
 
-    static double PrintOutputDouble(double result_div) {
-        System.out.println(result_div);
+    static int modeDeduction() { // Режим РАЗНОСТЬ!
+        calInputNumber();
+        for(int i = 1; i < listNumber.size(); i++) {
+            result = listNumber.get(0) - listNumber.get(i);
+        }
+        outputProgram();
+        return result;
+    }
+
+    static int modeMultiplier() { // Режим ПРОИЗВЕДЕНИЕ!
+        calInputNumber();
+        for(int i = 0; i < listNumber.size(); i++) {
+            result *= - listNumber.get(i);
+        }
+        outputProgram();
+        return result;
+    }
+
+    static double modeDivision() { // Режим ДЕЛЕНИЕ!
+        calInputDouble();
+        for(int i = 0; i < listNumberDouble.size(); i++) {
+            if(listNumberDouble.get(i) == 0) {
+                System.out.println("ERROR: Деление на ноль!");
+                return 0;
+            } else {
+                result_div = (listNumberDouble.get(0) / listNumberDouble.get(i)) + (listNumberDouble.get(0) % listNumberDouble.get(i));
+                outputProgramDouble();
+                return result_div;
+            }
+        }
         return result_div;
+    }
+
+    static String scannerString() { // Сканер String
+        String inputString = in.next();
+        return inputString;
+     }
+
+     static void outputProgram() {
+        System.out.print("Режим " + "(" + mode + ")");
+        for(int i = 0; i < listNumber.size(); i++) {
+            System.out.print(" " + listNumber.get(i));
+        }
+        System.out.print(" = " + result);
+    }
+
+    static void outputProgramDouble() {
+        System.out.print("Режим " + "(" + mode + ")");
+        for(int i = 0; i < listNumberDouble.size(); i++) {
+            System.out.print(" " + listNumberDouble.get(i));
+        }
+        System.out.print(" = " + result_div);
     }
 
 }
