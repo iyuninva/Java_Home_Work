@@ -14,9 +14,13 @@ public class Task_1 {
         String surnameName = scannerSurnameName();
         if ((HashMap().containsValue((surnameName))) == false) {
             System.out.println("Введенные значения отсутствуют в справочнике!");
-            System.out.println("Повторите ввод...");
-            outputHashMapSurnameName();
-            return;
+            System.out.println("Повторите ввод? Для выхода введите q");
+            if (scannerMode().equals("q")) {
+                return;
+            } else {
+                outputHashMapSurnameName();
+                return;
+            }
         } else {
             System.out.println();
             System.out.println("Результат:");
@@ -32,9 +36,13 @@ public class Task_1 {
         String number = scannerNumber();
         if ((HashMap().containsKey((number))) == false) {
             System.out.println("Введенные значения отсутствуют в справочнике!");
-            System.out.println("Повторите ввод...");
-            outputHashMapNumber();
-            return;
+            System.out.println("Повторите ввод? Для выхода введите q");
+            if (scannerMode().equals("q")) {
+                return;
+            } else {
+                outputHashMapNumber();
+                return;
+            }
         } else {
             System.out.println();
             System.out.println("Результат:");
