@@ -1,3 +1,5 @@
+package library_5;
+
 import java.util.Random;
 
 /*
@@ -7,12 +9,10 @@ import java.util.Random;
 public class Task_3 {
     static int[] arrayList = new int[10];
 
-    
-
     static void output() {
         System.out.println();
         System.out.print("Отсортированный результат: ");
-        for(int el : arrayList) {
+        for (int el : arrayList) {
             System.out.print(el + " ");
         }
     }
@@ -20,7 +20,7 @@ public class Task_3 {
     static void input() {
         System.out.println();
         System.out.print("Начальный список: ");
-        for(int el : arrayList) {
+        for (int el : arrayList) {
             System.out.print(el + " ");
         }
     }
@@ -89,7 +89,7 @@ public class Task_3 {
     }
 
     static int[] inputArrayNumber() {
-        for(int i = 0; i < arrayList.length; i++) {
+        for (int i = 0; i < arrayList.length; i++) {
             arrayList[i] = randomNumber();
         }
         return arrayList;
